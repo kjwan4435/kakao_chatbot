@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/activity", activityRouter);
 // app.use("/food", foodRouter);
 // app.use("/mood", moodRouter);
-// app.use("/sleep", sleepRouter);
+app.use("/sleep", sleepRouter);
 // app.use("/social", socialRouter);
 
 app.use("/api", apiRouter);
