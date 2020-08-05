@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const PORT = process.env.PORT || 80;
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 
@@ -53,6 +54,6 @@ apiRouter.post("/showHello", function (req, res) {
   res.status(200).send(responseBody);
 });
 
-app.listen(3000, function () {
-  console.log("Example skill server listening on port 3000!");
+app.listen(PORT, function () {
+  console.log("Example skill server listening on port!");
 });
