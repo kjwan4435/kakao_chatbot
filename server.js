@@ -3,6 +3,8 @@ const logger = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
+const db = require("./db");
+
 const apiRouter = require("./routes/api");
 const enterRouter = require("./routes/enter");
 const activityRouter = require("./routes/activity");
@@ -29,5 +31,5 @@ app.use("/activity", activityRouter);
 app.use("/api", apiRouter);
 
 app.listen(PORT, function () {
-  console.log(`KAKAO CHATBOT SERVER IS RUNNING ON ${PORT}`);
+  console.log(`💛 KAKAO CHATBOT SERVER IS RUNNING ON ${PORT}`);
 });
