@@ -1,4 +1,4 @@
-const apiRouter = express.Router();
+const apiRouter = require("express").Router();
 
 apiRouter.post("/sayHello", function (req, res) {
   const responseBody = {
@@ -37,3 +37,5 @@ apiRouter.post("/showHello", function (req, res) {
 
   res.status(200).send(responseBody);
 });
+
+module.exports = apiRouter;
