@@ -3,19 +3,39 @@ const sleepRouter = require("express").Router();
 let sleep = require("../models/sleep.model");
 
 sleepRouter.route("/1").post((req, res) => {
-  console.log(req);
+  const question = req.body.intent.name;
+  const answer = req.body.userRequest.utterance;
+  const id = req.body.userRequest.user.id;
+  const time = new Date().toLocaleDateString("en-US");
+
+  const Answer = new sleep({
+    question,
+    answer,
+    id,
+    time
+  });
+
+  Answer.save()
+    .then(() => console.log(Answer))
+    .catch((err) => console.log(`Error: ${err}`));
 
   const responseBody = {
-    version: "2.0",
-    template: {
-      outputs: [
-        {
-          simpleText: {
-            text: "hello I'm Ryan"
-          }
+    quickReplies: [
+      {
+        type: "text",
+        label: "quick",
+        message: "message",
+        data: {}
+      },
+      {
+        type: "url",
+        label: "",
+        message: "message",
+        data: {
+          url: ""
         }
-      ]
-    }
+      }
+    ]
   };
 
   res.status(200).send(responseBody);

@@ -15,6 +15,10 @@ const sleepSchema = new Schema(
     answer: {
       type: Number,
       required: true
+    },
+    time: {
+      type: String,
+      required: false
     }
   },
   { timestamps: true }
