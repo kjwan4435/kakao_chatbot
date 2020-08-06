@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const sleepSchema = new Schema(
+const answerSchema = new Schema(
   {
     id: {
       type: String,
@@ -13,10 +13,10 @@ const sleepSchema = new Schema(
       required: true
     },
     answer: {
-      type: Number,
+      type: String,
       required: true
     },
-    time: {
+    date: {
       type: String,
       required: false
     }
@@ -24,5 +24,5 @@ const sleepSchema = new Schema(
   { timestamps: true }
 );
 
-const sleep = mongoose.model("sleep", sleepSchema);
-module.exports = sleep;
+const answer = mongoose.model("answer", answerSchema);
+module.exports = answer;
