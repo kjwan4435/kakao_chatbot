@@ -28,18 +28,18 @@ sleepRouter.route("/0").post((req, res) => {
         {
           simpleText: {
             text:
-              "Q. 주인님은 오늘 기분이 어떠신가요?\n\n1. 최악이야.\n2. 별로 좋지않아.\n3. 보통이야.\n4. 좋은 편이야.\n5. 완전 기분 좋아!!"
+              "Q. 주인님은 오늘 기분이 어떠신가요?\n\n1. 최악이야.\n2. 별로 좋지않아.\n3. 보통이야.\n4. 좋은 편이야.\n5. 완전 기분 좋아!"
           }
         }
       ],
       quickReplies: [
         {
-          messageText: "오늘 기분 너무 안 좋은걸..",
+          messageText: "오늘 기분 너무 안 좋아",
           action: "message",
           label: "1"
         },
         {
-          messageText: "오늘 기분 별로 안 좋아..",
+          messageText: "오늘 기분 별로 안 좋아",
           action: "message",
           label: "2"
         },
@@ -54,7 +54,7 @@ sleepRouter.route("/0").post((req, res) => {
           label: "4"
         },
         {
-          messageText: "오늘 기분 완전 좋아!!",
+          messageText: "오늘 기분 완전 좋아!",
           action: "message",
           label: "5"
         }
@@ -62,7 +62,11 @@ sleepRouter.route("/0").post((req, res) => {
     }
   };
 
-  res.status(200).send(responseBody);
+  console.log(responseBody);
+  res
+    .status(200)
+    .send(responseBody)
+    .catch((err) => console.log(`Error: ${err}`));
 });
 
 sleepRouter.route("/1").post((req, res) => {
