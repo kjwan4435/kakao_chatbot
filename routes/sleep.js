@@ -1,6 +1,6 @@
 const sleepRouter = require("express").Router();
 
-let answer = require("../models/answer.model");
+let result = require("../models/answer.model");
 
 sleepRouter.route("/1").post((req, res) => {
   const question = req.body.intent.name;
@@ -8,7 +8,7 @@ sleepRouter.route("/1").post((req, res) => {
   const id = req.body.userRequest.user.id;
   const date = new Date().toLocaleDateString("en-US");
 
-  const Answer = new answer({
+  const Answer = new result({
     question,
     answer,
     id,
@@ -19,41 +19,55 @@ sleepRouter.route("/1").post((req, res) => {
     .then(() => console.log(Answer))
     .catch((err) => console.log(`Error: ${err}`));
 
+  let sentence = "기본값"
+
+  if (answer === "테스트1") {
+    sentence = "사랑해요";
+  } else if (answer === "테스트2") {
+    sentence = "싫어해요";
+  }
+
   const responseBody = {
     version: "2.0",
     template: {
       outputs: [
         {
-          basicCard: {
-            title: "보물상자",
-            description: "보물상자 안에는 뭐가 있을까",
-            thumbnail: {
-              imageUrl:
-                "http://k.kakaocdn.net/dn/83BvP/bl20duRC1Q1/lj3JUcmrzC53YIjNDkqbWK/i_6piz1p.jpg"
-            },
-            profile: {
-              imageUrl:
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4BJ9LU4Ikr_EvZLmijfcjzQKMRCJ2bO3A8SVKNuQ78zu2KOqM",
-              nickname: "보물상자"
-            },
-            social: {
-              like: 1238,
-              comment: 8,
-              share: 780
-            },
-            buttons: [
-              {
-                action: "message",
-                label: "열어보기",
-                messageText: "짜잔! 우리가 찾던 보물입니다"
-              },
-              {
-                action: "webLink",
-                label: "구경하기",
-                webLinkUrl: "https://e.kakao.com/t/hello-ryan"
-              }
-            ]
+          simpleText: {
+            text: `${sentence}`;
           }
+        },
+        {
+          simpleText: {
+            text:
+              "Q. 최근 일주일동안 하루에 잠은 평균 얼마나 주무셨나요?\n\n1. 4시간 이하\n2. 4-6시간\n3. 6-8시간\n4. 8-10시간\n5. 10시간 이하"
+          }
+        }
+      ],
+      quickReplies: [
+        {
+          messageText: "4시간도 못 잤어",
+          action: "message",
+          label: "1"
+        },
+        {
+          messageText: "4-6시간 정도 잔 것 같아.",
+          action: "message",
+          label: "2"
+        },
+        {
+          messageText: "6-8시간 정도 잤어!",
+          action: "message",
+          label: "3"
+        },
+        {
+          messageText: "음.. 8-10시간 정도?",
+          action: "message",
+          label: "4"
+        },
+        {
+          messageText: "10시간도 넘게 잤어!",
+          action: "message",
+          label: "5"
         }
       ]
     }
