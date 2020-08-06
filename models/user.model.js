@@ -12,10 +12,6 @@ const answerSchema = new Schema(
       type: String,
       required: true
     },
-    blockid: {
-      type: String,
-      required: true
-    },
     answer: {
       type: String,
       required: true
