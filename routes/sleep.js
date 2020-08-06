@@ -34,7 +34,7 @@ sleepRouter.route("/0").post((req, res) => {
       ],
       quickReplies: [
         {
-          messageText: "오늘 기분 너무 안 좋아",
+          messageText: "오늘 기분 너무 안 좋아..",
           action: "message",
           label: "1"
         },
@@ -63,10 +63,7 @@ sleepRouter.route("/0").post((req, res) => {
   };
 
   console.log(responseBody);
-  res
-    .status(200)
-    .send(responseBody)
-    .catch((err) => console.log(`Error: ${err}`));
+  res.status(200).send(responseBody);
 });
 
 sleepRouter.route("/1").post((req, res) => {
