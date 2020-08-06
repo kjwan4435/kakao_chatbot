@@ -19,7 +19,7 @@ sleepRouter.route("/1").post((req, res) => {
     .then(() => console.log(Answer))
     .catch((err) => console.log(`Error: ${err}`));
 
-  let sentence = "기본값"
+  let sentence = "기본값";
 
   if (answer === "테스트1") {
     sentence = "사랑해요";
@@ -33,7 +33,7 @@ sleepRouter.route("/1").post((req, res) => {
       outputs: [
         {
           simpleText: {
-            text: `${sentence}`;
+            text: `${sentence}`
           }
         },
         {
