@@ -11,10 +11,10 @@ apiRouter.post("/sayHello", function (req, res) {
   }
 
   const sleepBlock = "5f2ab465a61f23000117c5a8";
-  const activityBlock = "";
-  const foodBlock = "";
-  const moodBlock = "";
-  const socialBlock = "";
+  const activityBlock = "5f2d04eea231f900011b2f9a";
+  const foodBlock = "5f2d06d25d623f00015bd6a6";
+  const moodBlock = "5f2d05a5f046510001e0fb57";
+  const socialBlock = "5f2d0753b05d5f0001034d6d";
 
   const responseBody = {
     version: "2.0",
@@ -24,14 +24,43 @@ apiRouter.post("/sayHello", function (req, res) {
           simpleText: {
             text: `${sentence}`
           }
+        },
+        {
+          simpleText: {
+            text: "오늘은 어떤 것에 대해서 알아볼까요?"
+          }
         }
       ],
       quickReplies: [
         {
-          messageText: "안녕, 해피야!",
+          messageText: "잠",
           action: "block",
           blockId: `${sleepBlock}`,
-          label: "안녕, 해피야!"
+          label: "잠"
+        },
+        {
+          messageText: "활동",
+          action: "block",
+          blockId: `${activityBlock}`,
+          label: "활동"
+        },
+        {
+          messageText: "기분",
+          action: "block",
+          blockId: `${moodBlock}`,
+          label: "기분"
+        },
+        {
+          messageText: "식사",
+          action: "block",
+          blockId: `${foodBlock}`,
+          label: "식사"
+        },
+        {
+          messageText: "사회활동",
+          action: "block",
+          blockId: `${socialBlock}`,
+          label: "사회활동"
         }
       ]
     }
