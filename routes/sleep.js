@@ -35,27 +35,32 @@ sleepRouter.route("/0").post((req, res) => {
       quickReplies: [
         {
           messageText: "오늘 기분 너무 안 좋아..",
-          action: "message",
+          action: "block",
+          blockId: "5f2c27bbc30c210001a338c0",
           label: "1"
         },
         {
           messageText: "오늘 기분 별로 안 좋아",
-          action: "message",
+          action: "block",
+          blockId: "5f2c27bbc30c210001a338c0",
           label: "2"
         },
         {
           messageText: "오늘 기분 평범한걸?",
-          action: "message",
+          action: "block",
+          blockId: "5f2c27bbc30c210001a338c0",
           label: "3"
         },
         {
           messageText: "오늘 기분 좋은 편이야!",
-          action: "message",
+          action: "block",
+          blockId: "5f2c27bbc30c210001a338c0",
           label: "4"
         },
         {
           messageText: "오늘 기분 완전 좋아!",
-          action: "message",
+          action: "block",
+          blockId: "5f2c27bbc30c210001a338c0",
           label: "5"
         }
       ]
@@ -87,16 +92,20 @@ sleepRouter.route("/1").post((req, res) => {
 
   let sentence = "그러셨군요!";
 
-  if (answer === "테스트1") {
-    sentence = "사랑해요";
-  } else if (answer === "테스트2") {
-    sentence = "싫어해요";
-  } else if (answer === "테스트2") {
-    sentence = "싫어해요";
-  } else if (answer === "테스트2") {
-    sentence = "싫어해요";
-  } else if (answer === "테스트2") {
-    sentence = "싫어해요";
+  if (answer === "오늘 기분 너무 안 좋아..") {
+    sentence =
+      "이럴수가.. 무슨 일이세요?! 혹시 잠자리가 불편하셨던 건 아니에요??";
+  } else if (answer === "오늘 기분 별로 안 좋아") {
+    sentence =
+      "주인님 기분이 별로라니.. 제가 다 속상하네요! 혹시 잠자리는 어떠셨어요?";
+  } else if (answer === "오늘 기분 평범한걸?") {
+    sentence = "그러셨군요! 오늘은 한번 최근 잠자리에 대해서 여쭤볼려고 해요!";
+  } else if (answer === "오늘 기분 좋은 편이야!") {
+    sentence =
+      "이야! 기분이 좋으시다니 정말 다행인데요? 잠자리는 혹시 어떠셨어요?";
+  } else if (answer === "오늘 기분 완전 좋아!") {
+    sentence =
+      "야호!! 주인님 기분이 좋으시다니 날아갈 것만 같아요!\n주인님! 요즘 잠자리는 어떠신가요?";
   }
 
   const responseBody = {
