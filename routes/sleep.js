@@ -400,13 +400,13 @@ sleepRouter.route("/4").post((req, res) => {
         {
           messageText: "해피야, 고마워 :)",
           action: "block",
-          blockId: "5f2c27bbc30c210001a338c0",
+          blockId: "5f2ceb3a5a70c400016e15a7",
           label: "해피야, 고마워 :)"
         },
         {
           messageText: "해피야, 숙면을 위한 좋은 방법은 없을까?",
           action: "block",
-          blockId: "5f2c27bbc30c210001a338c0",
+          blockId: "5f2ceb3a5a70c400016e15a7",
           label: "숙면방법 좀 알려줘!"
         }
       ]
