@@ -305,31 +305,31 @@ sleepRouter.route("/3").post((req, res) => {
         {
           messageText: "4시간도 못 잤어",
           action: "block",
-          blockId: "5f2c27bbc30c210001a338c0",
+          blockId: "5f2ceb22a61f23000117cb08",
           label: "1"
         },
         {
           messageText: "4-6시간 정도 잔 것 같아.",
           action: "block",
-          blockId: "5f2c27bbc30c210001a338c0",
+          blockId: "5f2ceb22a61f23000117cb08",
           label: "2"
         },
         {
           messageText: "6-8시간 정도 잤어!",
           action: "block",
-          blockId: "5f2c27bbc30c210001a338c0",
+          blockId: "5f2ceb22a61f23000117cb08",
           label: "3"
         },
         {
           messageText: "음.. 8-10시간 정도?",
           action: "block",
-          blockId: "5f2c27bbc30c210001a338c0",
+          blockId: "5f2ceb22a61f23000117cb08",
           label: "4"
         },
         {
           messageText: "10시간도 넘게 잤어!",
           action: "block",
-          blockId: "5f2c27bbc30c210001a338c0",
+          blockId: "5f2ceb22a61f23000117cb08",
           label: "5"
         }
       ]
@@ -408,6 +408,69 @@ sleepRouter.route("/4").post((req, res) => {
           action: "block",
           blockId: "5f2c27bbc30c210001a338c0",
           label: "숙면방법 좀 알려줘!"
+        }
+      ]
+    }
+  };
+
+  res.status(200).send(responseBody);
+});
+
+sleepRouter.route("/5").post((req, res) => {
+  const question = req.body.userRequest.block.name;
+  const blockid = req.body.userRequest.block.id;
+  const answer = req.body.userRequest.utterance;
+  const id = req.body.userRequest.user.id;
+  const date = new Date().toLocaleDateString("en-US");
+
+  const Answer = new result({
+    question,
+    blockid,
+    answer,
+    id,
+    date
+  });
+
+  Answer.save()
+    .then(() => console.log(Answer))
+    .catch((err) => console.log(`Error: ${err}`));
+
+  let sentence = "해피야, 고마워 :)";
+
+  if (answer === "해피야, 고마워 :)") {
+    sentence =
+      "헤헤, 주인님이 이렇게 정성껏 대답해주셔서 오히려 제가 얼마나 행복한 지 몰라요~!!";
+  } else if (answer === "해피야, 숙면을 위한 좋은 방법은 없을까?") {
+    sentence =
+      "그건 제가 전문가죠! 먼저 하루동안 간단한 운동을 통해 숙면을 유도해보는 건 어떨까요? 잠들기 전, 따뜻한 물로 샤워를 한다던지 따뜻한 차를 마시는 것도 좋은 방법이에요.\n\n단, 취침 직전 야식이나 술은 안 좋으니 가급적 피하시구요! 취침 직전 휴대폰 너무 보시는 것도 좋지 않아요!";
+  }
+
+  const responseBody = {
+    version: "2.0",
+    template: {
+      outputs: [
+        {
+          simpleText: {
+            text: `${sentence}`
+          }
+        },
+        {
+          simpleText: {
+            text:
+              "그럼 오늘 질문은 여기까지구요! 저는 내일 다시 찾아뵐게요:)\n\n남은 하루 행복하시구요! 사랑합니다 주인님 ❤️"
+          }
+        }
+      ],
+      quickReplies: [
+        {
+          messageText: "그래, 내일 보자 :)",
+          action: "message",
+          label: "그래, 내일 보자 :)"
+        },
+        {
+          messageText: "안돼, 가지마!",
+          action: "message",
+          label: "안돼, 가지마!"
         }
       ]
     }
