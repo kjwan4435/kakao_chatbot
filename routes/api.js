@@ -24,7 +24,7 @@ apiRouter.post("/sayHello", function (req, res) {
         {
           messageText: "안녕, 해피야!",
           action: "block",
-          blockid: "5f2ab465a61f23000117c5a8",
+          blockId: "5f2ab465a61f23000117c5a8",
           label: "안녕, 해피야!"
         }
       ]
