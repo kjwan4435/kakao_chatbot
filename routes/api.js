@@ -10,6 +10,12 @@ apiRouter.post("/sayHello", function (req, res) {
     sentence = "안녕하세요 주인님?\n오늘 하루도 아자아자!! ❤️";
   }
 
+  const sleepBlock = "5f2ab465a61f23000117c5a8";
+  const activityBlock = "";
+  const foodBlock = "";
+  const moodBlock = "";
+  const socialBlock = "";
+
   const responseBody = {
     version: "2.0",
     template: {
@@ -24,7 +30,7 @@ apiRouter.post("/sayHello", function (req, res) {
         {
           messageText: "안녕, 해피야!",
           action: "block",
-          blockId: "5f2ab465a61f23000117c5a8",
+          blockId: `${sleepBlock}`,
           label: "안녕, 해피야!"
         }
       ]
