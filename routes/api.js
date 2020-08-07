@@ -1,14 +1,31 @@
 const apiRouter = require("express").Router();
 
 apiRouter.post("/sayHello", function (req, res) {
+  const number = Math.floor(Math.random() * 3) + 1;
+  let sentence =
+    "안녕하세요! 주인님 :)\n오늘 왠지 좋은 일이 생길 것만 같은걸요?";
+  if (number === 1) {
+    sentence = "안녕하세요! 주인님 :)\n너무너무 기분좋은 하루입니다!! 헤헤";
+  } else if (number === 2) {
+    sentence = "안녕하세요 주인님?\n오늘 하루도 아자아자!! ❤️";
+  }
+
   const responseBody = {
     version: "2.0",
     template: {
       outputs: [
         {
           simpleText: {
-            text: "hello I'm Ryan"
+            text: `${sentence}`
           }
+        }
+      ],
+      quickReplies: [
+        {
+          messageText: "안녕, 해피야!",
+          action: "block",
+          blockid: "5f2ab465a61f23000117c5a8",
+          label: "안녕, 해피야!"
         }
       ]
     }
