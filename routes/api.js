@@ -7,6 +7,24 @@ const moodBlock = "5f2d05a5f046510001e0fb57";
 const socialBlock = "5f2d0753b05d5f0001034d6d";
 
 apiRouter.post("/0", function (req, res) {
+  const question = req.body.userRequest.block.name;
+  const blockid = req.body.userRequest.block.id;
+  const answer = req.body.userRequest.utterance;
+  const id = req.body.userRequest.user.id;
+  const date = new Date().toLocaleDateString("en-US");
+
+  const Answer = new result({
+    question,
+    blockid,
+    answer,
+    id,
+    date
+  });
+
+  Answer.save()
+    .then(() => console.log(Answer))
+    .catch((err) => console.log(`Error: ${err}`));
+
   const number = Math.floor(Math.random() * 3) + 1;
   let sentence =
     "안녕하세요! 주인님 :)\n오늘 왠지 좋은 일이 생길 것만 같은걸요?";
@@ -34,34 +52,22 @@ apiRouter.post("/0", function (req, res) {
       ],
       quickReplies: [
         {
-          messageText: "잠",
+          messageText: "오늘 기분 우울해..",
           action: "block",
           blockId: `${sleepBlock}`,
-          label: "잠"
+          label: "1"
         },
         {
-          messageText: "활동",
+          messageText: "오늘은 평범했어!",
           action: "block",
           blockId: `${activityBlock}`,
-          label: "활동"
+          label: "2"
         },
         {
-          messageText: "기분",
+          messageText: "오늘 기분 좋아!",
           action: "block",
           blockId: `${moodBlock}`,
-          label: "기분"
-        },
-        {
-          messageText: "식사",
-          action: "block",
-          blockId: `${foodBlock}`,
-          label: "식사"
-        },
-        {
-          messageText: "사회활동",
-          action: "block",
-          blockId: `${socialBlock}`,
-          label: "사회활동"
+          label: "3"
         }
       ]
     }
@@ -71,6 +77,24 @@ apiRouter.post("/0", function (req, res) {
 });
 
 apiRouter.post("/1", function (req, res) {
+  const question = req.body.userRequest.block.name;
+  const blockid = req.body.userRequest.block.id;
+  const answer = req.body.userRequest.utterance;
+  const id = req.body.userRequest.user.id;
+  const date = new Date().toLocaleDateString("en-US");
+
+  const Answer = new result({
+    question,
+    blockid,
+    answer,
+    id,
+    date
+  });
+
+  Answer.save()
+    .then(() => console.log(Answer))
+    .catch((err) => console.log(`Error: ${err}`));
+
   const number = Math.floor(Math.random() * 3) + 1;
   let sentence =
     "안녕하세요! 주인님 :)\n오늘 왠지 좋은 일이 생길 것만 같은걸요?";
