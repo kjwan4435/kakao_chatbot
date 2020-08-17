@@ -2,27 +2,63 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const answerSchema = new Schema(
+const userSchema = new Schema(
   {
     id: {
       type: String,
       required: "ID REQUIRED"
     },
-    question: {
-      type: String,
+    resDateArray: {
+      type: Array,
       required: true
     },
-    answer: {
-      type: String,
+    sleepCounter: {
+      type: Number,
       required: true
     },
-    date: {
-      type: String,
+    activityCounter: {
+      type: Number,
+      required: true
+    },
+    moodCounter: {
+      type: Number,
+      required: true
+    },
+    foodCounter: {
+      type: Number,
+      required: true
+    },
+    socialCounter: {
+      type: Number,
+      required: true
+    },
+    sleepScore: {
+      type: Number,
+      required: true
+    },
+    activityScore: {
+      type: Number,
+      required: true
+    },
+    moodScore: {
+      type: Number,
+      required: true
+    },
+    foodScore: {
+      type: Number,
+      required: true
+    },
+    socialScore: {
+      type: Number,
+      required: true
+    },
+    totalScore: {
+      type: Number,
       required: false
     }
   },
   { timestamps: true }
 );
 
-const answer = mongoose.model("answer", answerSchema);
-module.exports = answer;
+const user = mongoose.model("user", userSchema);
+module.exports = user;
